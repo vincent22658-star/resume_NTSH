@@ -48,7 +48,7 @@ def index():
 def ask_question():
     if request.method == 'POST':
         q = request.form['question']
-        a = questions_answers[q]
+        a = questions_answers.get(q, "抱歉，我不知道這個詞。")
         return render_template('ask.html', question=q, answer=a)
     return render_template('ask.html', question="", answer="")
     
