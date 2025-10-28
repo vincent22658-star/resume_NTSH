@@ -4,7 +4,7 @@ from flask import Flask, render_template
 app = Flask(__name__)
 
 # 建立問答集Store questions and answers in a simple list for demonstration purposes
-questions_answers == {
+questions_answers = {
     "蘋果": "apple",
     "apple": "蘋果",
     "香蕉": "banana",
