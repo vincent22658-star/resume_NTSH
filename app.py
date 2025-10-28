@@ -3,7 +3,8 @@ from flask import Flask, render_template
 
 app = Flask(__name__)
 
-# 建立問答集 Store questions and answers in a simple list for demonstration purposes
+# 建立問答集
+Store questions and answers in a simple list for demonstration purposes
 questions_answers = {
     "蘋果": "apple",
     "apple": "蘋果",
@@ -45,7 +46,6 @@ def index():
     
 # 網頁/ask的處理
 @app.route('/ask', methods=['GET', 'POST'])
-
 def ask_question():
     if request.method == 'POST':
         q = request.form['question']
