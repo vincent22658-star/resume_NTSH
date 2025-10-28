@@ -2,73 +2,87 @@
 <html lang="zh-Hant">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>問答系統</title>
+    <title>中英字典查詢</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
+            font-family: "Microsoft JhengHei", sans-serif;
+            background: linear-gradient(120deg, #f3f4f6, #e0f7fa);
+            text-align: center;
             margin: 0;
             padding: 0;
         }
-        .container {
-            width: 50%;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: white;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
+
         h1 {
-            text-align: center;
-            color: #333;
+            color: #00796b;
+            margin-top: 50px;
         }
-        .form-group {
-            margin-bottom: 15px;
+
+        form {
+            margin-top: 30px;
         }
+
         input[type="text"] {
-            width: 100%;
+            width: 250px;
             padding: 10px;
-            border: 1px solid #ccc;
+            font-size: 16px;
+            border: 2px solid #00796b;
             border-radius: 5px;
+            outline: none;
         }
-        button {
-            width: 100%;
-            padding: 10px;
-            background-color: #4CAF50;
+
+        input[type="submit"] {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #00796b;
             color: white;
             border: none;
             border-radius: 5px;
             cursor: pointer;
+            margin-left: 10px;
         }
-        button:hover {
-            background-color: #45a049;
+
+        input[type="submit"]:hover {
+            background-color: #004d40;
         }
-        .answer {
-            margin-top: 20px;
-            padding: 10px;
-            background-color: #e2e2e2;
-            border-radius: 5px;
-            display: none;
+
+        .result {
+            margin-top: 40px;
+            font-size: 20px;
+            color: #333;
+        }
+
+        .notfound {
+            color: #d32f2f;
+        }
+
+        footer {
+            margin-top: 50px;
+            font-size: 14px;
+            color: #777;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>問答系統</h1>
-        <form method="POST" action="/ask">
-            <div class="form-group">
-                <label for="question">請問你的問題：</label>
-                <input type="text" id="question" name="question" value="{{ question }}" placeholder="輸入你的問題..." required>
-            </div>
-            <button type="submit">詢問</button>
-        </form>
+    <h1>🌏 中英字典查詢</h1>
 
-        {% if answer %}
-        <div class="answer">
-            <h3>回答：</h3>
-            <p>{{ answer }}</p>
+    <form method="POST">
+        <label for="question">請輸入單字：</label><br><br>
+        <input type="text" id="question" name="question" placeholder="輸入中或英文" required>
+        <input type="submit" value="查詢">
+    </form>
+
+    {% if question %}
+        <div class="result">
+            {% if answer == "抱歉，我不知道這個詞。" %}
+                <p class="notfound">❌ 查無資料：「{{ question }}」</p>
+            {% else %}
+                <p>✅ <strong>{{ question }}</strong> 的翻譯是：<strong>{{ answer }}</strong></p>
+            {% endif %}
         </div>
-        {% endif %}
-    </div>
+    {% endif %}
+
+    <footer>
+        <p>中英字典查詢系統 © 2025</p>
+    </footer>
 </body>
 </html>
