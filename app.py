@@ -45,10 +45,11 @@ def index():
     
 # 網頁/ask的處理
 @app.route('/ask', methods=['GET', 'POST'])
-def ask_question():
+def ask_que
+stion():
     if request.method == 'POST':
         q = request.form['question']
-        a = questions_answers.get(q, "抱歉，我不知道這個詞。")
+        a = questions_answers[q]
         return render_template('ask.html', question=q, answer=a)
     return render_template('ask.html', question="", answer="")
     
