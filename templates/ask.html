@@ -1,9 +1,19 @@
-<form method="post">
-    <input type="text" name="question" placeholder="輸入你的問題">
-    <input type="submit" value="送出">
-</form>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ask a Question</title>
+</head>
+<body>
+    <form method="POST" action="/ask">
+        <label for="question">Ask a question:</label><br>
+        <input type="text" name="question" id="question" required><br><br>
+        <input type="submit" value="Ask">
+    </form>
 
-{% if question %}
-    <p><strong>問題：</strong>{{ question }}</p>
-    <p><strong>答案：</strong>{{ answer }}</p>
-{% endif %}
+    {% if question %}
+        <h3>Question: {{ question }}</h3>
+        <p>Answer: {{ answer }}</p>
+    {% endif %}
+</body>
+</html>
+
