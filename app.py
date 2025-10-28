@@ -45,6 +45,7 @@ def index():
     
 # 網頁/ask的處理
 @app.route('/ask', methods=['GET', 'POST'])
+
 def ask_question():
     if request.method == 'POST':
         q = request.form['question']
