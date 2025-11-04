@@ -1,4 +1,5 @@
-from flask import Flask, render_template, request
+
+from flask import Flask, render_template
 
 app = Flask(__name__)
 
@@ -38,21 +39,43 @@ questions_answers = {
     "sad": "難過"
 }
 
-
-
-# 首頁/的處理
 @app.route('/')
 def index():
-    return render_template('index.html', QA=questions_answers)
-
+    return render_template('index.html')
+    
 # 網頁/ask的處理
 @app.route('/ask', methods=['GET', 'POST'])
-def ask_question():
+def ask_que
+stion():
     if request.method == 'POST':
         q = request.form['question']
         a = questions_answers[q]
         return render_template('ask.html', question=q, answer=a)
     return render_template('ask.html', question="", answer="")
+    
+@app.route('/competition')
+def competition():
+    return render_template('competition.html')
+
+@app.route('/activities')
+def activities():
+    return render_template('activities.html')
+
+@app.route('/leadership')
+def leadership():
+    return render_template('leadership.html')
+
+@app.route('/club')
+def club():
+    return render_template('club.html')
+
+@app.route('/electives')
+def electives():
+    return render_template('electives.html')
+
+@app.route('/ai')
+def ai():
+    return render_template('ai.html')
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8080)
+    app.run(debug=True)
